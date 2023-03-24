@@ -3,6 +3,7 @@ const dotenv=require("dotenv").config()
 const cors=require("cors")
 const connect=require("./config/db")
 const employeeRouter=require("./routes/employeeRouter")
+const formRouter=require("./routes/formRouter")
 const app=express()
 
 app.use(express.json())
@@ -14,6 +15,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/api",employeeRouter)
+app.use("/api",formRouter)
 
 app.listen(PORT,async()=>{
     await connect()
