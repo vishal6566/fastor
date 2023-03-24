@@ -1,0 +1,10 @@
+Apis
+
+1.//POST-Register employee="http://localhost:8080/api/register"  
+2.//POST-Login employee="http://localhost:8080/api/login"
+3.//POST-Form Register="http://localhost:8080/api/registerform"
+4.//GET-Get All Forms="http://localhost:8080/api/getallform"
+5.//GET-Get Claimed Forms="http://localhost:8080/api/getclaimedform"
+6.//GET-Get UnClaimed Forms="http://localhost:8080/api/getunclaimedform"
+7.//PATCH-Claim form="http://localhost:8080/api/claimform/:id"
+8.//GET-Get claim form for login user="http://localhost:8080/api/loggedinuserform"

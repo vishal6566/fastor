@@ -97,8 +97,25 @@ const claimForm=asyncHandler(async(req,res)=>{
 
 })
 
+//claimed form for login user
+
+const loggedEmployeeClaimForm=asyncHandler(async(req,res)=>{
+    const employee=await Employee.findById(req.employee._id)
+    let id=await employee._id
+    const forms=await Form.find()
+    const loggedUserForm=forms.filter(el=>el.claimedBy===id)
+if(forms){
+   
+    res.send(loggedUserForm)
+}else{
+    res.status(400)
+    throw new Error ("unclaimed forms not found")
+   }
+  
+  
+})
 
 
 
 
-module.exports={registerStudent,getAllForm,getAllClaimedForm,getAllUnclaimedForm,claimForm}
+module.exports={registerStudent,getAllForm,getAllClaimedForm,getAllUnclaimedForm,claimForm,loggedEmployeeClaimForm}
