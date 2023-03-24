@@ -25,6 +25,10 @@ const formSchema=mongoose.Schema({
       claimedBy:{
         type:String,
         default:null
+      },
+      employeeEmailId:{
+        type:String,
+        default:null
       }
 
     
