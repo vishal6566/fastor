@@ -34,7 +34,7 @@ const registerStudent=asyncHandler(
 const getAllForm=asyncHandler(async(req,res)=>{
     const forms=await Form.find()
     if(forms){
-        res.send(forms)
+        res.status(200).json({forms})
     }else{
         res.status(400)
         throw new Error ("forms not found")
@@ -46,7 +46,7 @@ const getAllClaimedForm=asyncHandler(async(req,res)=>{
     const forms=await Form.find()
     const claimedForms=forms.filter(obj => obj.claimed === true)
     if( claimedForms){
-        res.send( claimedForms)
+        res.status(200).json({claimedForms})
     }else{
         res.status(400)
         throw new Error ("claimed forms not found")
@@ -58,7 +58,7 @@ const getAllUnclaimedForm=asyncHandler(async(req,res)=>{
     const forms=await Form.find()
     const unclaimedForms=forms.filter(obj => obj.claimed === false)
     if( unclaimedForms){
-        res.send( unclaimedForms)
+        res.status(200).json({unclaimedForms})
     }else{
         res.status(400)
         throw new Error ("unclaimed forms not found")
@@ -103,13 +103,14 @@ const loggedEmployeeClaimForm=asyncHandler(async(req,res)=>{
     const employee=await Employee.findById(req.employee._id)
     let id=await employee._id
     const forms=await Form.find()
-    const loggedUserForm=forms.filter(el=>el.claimedBy===id)
+    const loggedUserForm=forms.filter(el=>el.claimedBy==id)
+   
 if(forms){
    
-    res.send(loggedUserForm)
+    res.status(200).json({loggedUserForm})
 }else{
     res.status(400)
-    throw new Error ("unclaimed forms not found")
+    throw new Error ("logged forms not found")
    }
   
   
